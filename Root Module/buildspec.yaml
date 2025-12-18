@@ -7,15 +7,11 @@ phases:
 
   pre_build:
     commands:
-      - echo "Changing directory to Root Module"
-      - cd "Root Module"
+      - pwd
+      - ls -la
       - terraform --version
       - terraform init
 
   build:
     commands:
-      - terraform plan 
-
-  post_build:
-    commands:
-      - echo "Terraform plan completed"
+      - terraform plan -input=false
