@@ -2,16 +2,22 @@ version: 0.2
 
 phases:
   install:
-    runtime-versions:
-      terraform: 1.6
+    commands:
+      - echo "Installing Terraform"
+      - yum install -y yum-utils
+      - yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
+      - yum install -y terraform
+      - terraform --version
 
   pre_build:
     commands:
+      - echo "Current directory:"
       - pwd
+      - echo "Listing files:"
       - ls -la
-      - terraform --version
       - terraform init
 
   build:
     commands:
       - terraform plan -input=false
+      - terraform apply -input=false -auto-approve
