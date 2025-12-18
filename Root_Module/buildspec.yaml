@@ -11,13 +11,13 @@ phases:
 
   pre_build:
     commands:
-      - echo "Current directory:"
+      - echo "Going to Root_Module"
+      - cd Root_Module
       - pwd
-      - echo "Listing files:"
       - ls -la
       - terraform init
 
   build:
     commands:
       - terraform plan -input=false
-      - terraform apply -input=false -auto-approve
+      - terraform apply -auto-approve -input=false
