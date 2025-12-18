@@ -11,13 +11,15 @@ phases:
 
   pre_build:
     commands:
+      - cd "Root Module"
       - terraform init
 
   build:
     commands:
+      - cd "Root Module"
       - terraform plan
 
   post_build:
     commands:
+      - cd "Root Module"
       - terraform apply -auto-approve
-  
